@@ -286,9 +286,6 @@ $app->post('/mesaj_ekle', function (Request $request, Response $response) {
     $token_request = $request->getParam("token");
 
     $user = internalUserDetails($username);
-
-
-
     if ($user->token == $token_request) {
 
         $db = new Db();
@@ -307,27 +304,25 @@ $app->post('/mesaj_ekle', function (Request $request, Response $response) {
                 return $response
                     ->withStatus(200)
                     ->withHeader("Content-Type", 'application/json')
-                    ->withJson(array(
-                        "text"  => "Kayıt başarılı bir şekilde eklenmiştir.."
-                    ), null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+                    ->withJson((new ResponseSuccessModel())
+                            ->setMessage("Kayıt başarılı bir şekilde eklenmiştir.."),
+                        null,
+                        JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
+                    );
             } else {
                 return $response
                     ->withStatus(401)
                     ->withHeader("Content-Type", 'application/json')
-                    ->withJson(array(
-                        "error" => array(
-                            "text"  => "Ekleme işlemi sırasında bir problem oluştu."
-                        )
-                    ), null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+                    ->withJson((new ResponseErrorModel())
+                            ->setMessage("Ekleme işlemi sırasında bir problem oluştu."),
+                        null,
+                        JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
+                    );
             }
         } catch (PDOException $e) {
             return $response->withJson(
-                array(
-                    "error" => array(
-                        "text"  => $e->getMessage(),
-                        "code"  => $e->getCode()
-                    )
-                ),
+                (new ResponseErrorModel())
+                    ->setMessage($e->getMessage()),
                 null,
                 JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
             );
@@ -337,12 +332,11 @@ $app->post('/mesaj_ekle', function (Request $request, Response $response) {
         return $response
             ->withStatus(400)
             ->withHeader("Content-Type", 'application/json')
-            ->withJson(array(
-                "error" => array(
-                    "text"  => "Geçersiz kullanıcı, Ekleme işlemi sırasında bir problem oluştu."
-                    //"text"  => $user
-                )
-            ), null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+            ->withJson((new ResponseErrorModel())
+                    ->setMessage("Geçersiz kullanıcı, Ekleme işlemi sırasında bir problem oluştu."),
+                null,
+                JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
+            );
     }
 });
 
