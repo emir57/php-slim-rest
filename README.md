@@ -12,7 +12,9 @@ bool $success;
 function setMessage(string $message);
 <br>
 <hr>
-ResponseSuccessModel ```diff -extends ``` ResponseModel
+```diff
+ResponseSuccessModel  -extends ResponseModel
+```
 <br>
 constructor => $success = true;
 <br>
