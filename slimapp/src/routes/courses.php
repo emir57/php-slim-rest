@@ -179,7 +179,10 @@ $app->post('/kayit', function (Request $request, Response $response) {
                     ->withStatus(200)
                     ->withHeader("Content-Type", 'application/json')
                     //->withJson($user->token);
-                    ->withJson($user, null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+                    ->withJson((new ResponseSuccessDataModel())
+                                ->setMessage("Kayıt başarılı")
+                                ->setData($user)
+                    , null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
             } else {
                 return $response
                     ->withStatus(400)
