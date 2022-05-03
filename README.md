@@ -12,7 +12,7 @@ bool $success;
 function setMessage(string $message);
 <br>
 <hr>
-ResponseSuccessModel <span style="color:red;">extends</span> ResponseModel
+ResponseSuccessModel <span style="color:#884EA0;">extends</span> ResponseModel
 <br>
 constructor => $success = true;
 <br>
