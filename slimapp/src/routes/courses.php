@@ -72,9 +72,11 @@ $app->get('/mesajlar', function (Request $request, Response $response) {
             ->withStatus(200)
             ->withHeader("Content-Type", 'application/json')
             ->withJson((new ResponseSuccessDataModel())
-                        ->setMessage("Listeleme başarılı")
-                        ->setData($mesajlar)
-            , null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+                    ->setMessage("Listeleme başarılı")
+                    ->setData($mesajlar),
+                null,
+                JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
+            );
     } catch (PDOException $e) {
         return $response->withJson(
             array(
@@ -103,9 +105,11 @@ $app->get('/mesajlar/{id}', function (Request $request, Response $response) {
             ->withStatus(200)
             ->withHeader("Content-Type", 'application/json')
             ->withJson((new ResponseSuccessDataModel())
-                        ->setMessage("Getirme başarılı")
-                        ->setData($mesajlar)
-            , null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+                    ->setMessage("Getirme başarılı")
+                    ->setData($mesajlar),
+                null,
+                JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
+            );
     } catch (PDOException $e) {
         return $response->withJson(
             array(
@@ -180,26 +184,30 @@ $app->post('/kayit', function (Request $request, Response $response) {
                     ->withHeader("Content-Type", 'application/json')
                     //->withJson($user->token);
                     ->withJson((new ResponseSuccessDataModel())
-                                ->setMessage("Kayıt başarılı")
-                                ->setData($user)
-                    , null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+                            ->setMessage("Kayıt başarılı")
+                            ->setData($user),
+                        null,
+                        JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
+                    );
             } else {
                 return $response
                     ->withStatus(400)
                     ->withHeader("Content-Type", 'application/json')
                     ->withJson((new ResponseErrorModel())
-                                ->setMessage("Bu kullanıcı kayıtlı!")
-                    , null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+                            ->setMessage("Bu kullanıcı kayıtlı!"),
+                        null,
+                        JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
+                    );
             }
         } else {
             return $response
                 ->withStatus(400)
                 ->withHeader("Content-Type", 'application/json')
-                ->withJson(array(
-                    "error" => array(
-                        "text"  => "Girdiğiniz bilgileri kontrol ediniz !"
-                    )
-                ), null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+                ->withJson((new ResponseErrorModel())
+                        ->setMessage("Girdiğiniz bilgileri kontrol ediniz!"),
+                    null,
+                    JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
+                );
         }
     } catch (PDOException $e) {
         return $response->withJson(
