@@ -79,12 +79,8 @@ $app->get('/mesajlar', function (Request $request, Response $response) {
             );
     } catch (PDOException $e) {
         return $response->withJson(
-            array(
-                "error" => array(
-                    "text"  => $e->getMessage(),
-                    "code"  => $e->getCode()
-                )
-            ),
+            (new ResponseErrorModel)
+                ->setMessage($e->getMessage()),
             null,
             JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
         );
@@ -112,12 +108,8 @@ $app->get('/mesajlar/{id}', function (Request $request, Response $response) {
             );
     } catch (PDOException $e) {
         return $response->withJson(
-            array(
-                "error" => array(
-                    "text"  => $e->getMessage(),
-                    "code"  => $e->getCode()
-                )
-            ),
+            (new ResponseErrorModel)
+                ->setMessage($e->getMessage()),
             null,
             JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
         );
