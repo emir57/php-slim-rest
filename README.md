@@ -1,9 +1,8 @@
 # php-slim-rest
-
 Add custom response model
 <br>
 <hr>
-ResponseModel
+<b>ResponseModel</b>
 <br>
 string $message;
 <br>
@@ -12,30 +11,30 @@ bool $success;
 function setMessage(string $message);
 <br>
 <hr>
-ResponseSuccessModel extends ResponseModel
+<b>ResponseSuccessModel <i>extends</i> ResponseModel</b>
 <br>
 constructor => $success = true;
 <br>
 <hr>
-ResponseErrorModel extends ResponseModel
+<b>ResponseErrorModel <i>extends</i> ResponseModel</b>
 <br>
 constructor => $success = false;
 <br>
 
 <hr>
-ResponseDataModel extends ResponseModel
+<b>ResponseDataModel <i>extends</i> ResponseModel</b>
 <br>
 $data;
 <br>
 function setData($data);
 <br>
 <hr>
-ResponseSuccessDataModel extends ResponseDataModel
+<b>ResponseSuccessDataModel <i>extends</i> ResponseDataModel</b>
 <br>
 constructor => $success = true;
 <br>
 <hr>
-ResponseErrorDataModel extends ResponseDataModel
+<b>ResponseErrorDataModel <i>extends</i> ResponseDataModel</b>
 <br>
 constructor => $success = false;
 <br>
