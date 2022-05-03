@@ -13,31 +13,31 @@ function setMessage(string $message);
 <br>
 <hr>
 ```diff
-ResponseSuccessModel  -extends ResponseModel
+ResponseSuccessModel  - extends ResponseModel
 ```
 <br>
 constructor => $success = true;
 <br>
 <hr>
-ResponseErrorModel ```diff -extends ``` ResponseModel
+ResponseErrorModel ```diff - extends ``` ResponseModel
 <br>
 constructor => $success = false;
 <br>
 
 <hr>
-ResponseDataModel ```diff -extends ``` ResponseModel
+ResponseDataModel ```diff - extends ``` ResponseModel
 <br>
 $data;
 <br>
 function setData($data);
 <br>
 <hr>
-ResponseSuccessDataModel ```diff -extends ``` ResponseDataModel
+ResponseSuccessDataModel ```diff - extends ``` ResponseDataModel
 <br>
 constructor => $success = true;
 <br>
 <hr>
-ResponseErrorDataModel ```diff -extends ``` ResponseDataModel
+ResponseErrorDataModel ```diff - extends ``` ResponseDataModel
 <br>
 constructor => $success = false;
 <br>
