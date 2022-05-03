@@ -102,7 +102,10 @@ $app->get('/mesajlar/{id}', function (Request $request, Response $response) {
         return $response
             ->withStatus(200)
             ->withHeader("Content-Type", 'application/json')
-            ->withJson($mesajlar, null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+            ->withJson((new ResponseSuccessDataModel())
+                        ->setMessage("Getirme başarılı")
+                        ->setData($mesajlar)
+            , null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
     } catch (PDOException $e) {
         return $response->withJson(
             array(
