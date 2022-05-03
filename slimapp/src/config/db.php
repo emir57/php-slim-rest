@@ -3,7 +3,7 @@
 class Db {
     private $dbhost = "localhost";
     private $dbuser = "root";
-    private $dbpass = "root";
+    private $dbpass = "usbw";
     private $dbname = "emyo";
 	private $sitekey = "XrdfGtrg98456";
 
