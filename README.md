@@ -1,5 +1,5 @@
 # php-slim-rest
-```diff
+
 Add custom response model
 <br>
 <hr>
@@ -12,30 +12,30 @@ bool $success;
 function setMessage(string $message);
 <br>
 <hr>
-ResponseSuccessModel <span style="color:#884EA0;">extends</span> ResponseModel
+ResponseSuccessModel ```diff -extends``` ResponseModel
 <br>
 constructor => $success = true;
 <br>
 <hr>
-ResponseErrorModel <span style="color:#884EA0;">extends</span> ResponseModel
+ResponseErrorModel ```diff -extends``` ResponseModel
 <br>
 constructor => $success = false;
 <br>
 
 <hr>
-ResponseDataModel <span style="color:#884EA0;">extends</span> ResponseModel
+ResponseDataModel ```diff -extends``` ResponseModel
 <br>
 $data;
 <br>
 function setData($data);
 <br>
 <hr>
-ResponseSuccessDataModel <span style="color:#884EA0;">extends</span> ResponseDataModel
+ResponseSuccessDataModel ```diff -extends``` ResponseDataModel
 <br>
 constructor => $success = true;
 <br>
 <hr>
-ResponseErrorDataModel <span style="color:#884EA0;">extends</span> ResponseDataModel
+ResponseErrorDataModel extends ResponseDataModel
 <br>
 constructor => $success = false;
 <br>
