@@ -12,30 +12,30 @@ bool $success;
 function setMessage(string $message);
 <br>
 <hr>
-ResponseSuccessModel extends ResponseModel
+ResponseSuccessModel <span style="color:#884EA0;">extends</span> ResponseModel
 <br>
 constructor => $success = true;
 <br>
 <hr>
-ResponseErrorModel extends ResponseModel
+ResponseErrorModel <span style="color:#884EA0;">extends</span> ResponseModel
 <br>
 constructor => $success = false;
 <br>
 
 <hr>
-ResponseDataModel extends ResponseModel
+ResponseDataModel <span style="color:#884EA0;">extends</span> ResponseModel
 <br>
 $data;
 <br>
 function setData($data);
 <br>
 <hr>
-ResponseSuccessDataModel extends ResponseDataModel
+ResponseSuccessDataModel <span style="color:#884EA0;">extends</span> ResponseDataModel
 <br>
 constructor => $success = true;
 <br>
 <hr>
-ResponseErrorDataModel extends ResponseDataModel
+ResponseErrorDataModel <span style="color:#884EA0;">extends</span> ResponseDataModel
 <br>
 constructor => $success = false;
 <br>
