@@ -30,6 +30,7 @@ class ResponseDataModel extends ResponseModel
     public function setData($data)
     {
         $this->data = $data;
+        return $this;
     }
 }
 class ResponseSuccessDataModel extends ResponseDataModel
@@ -66,15 +67,14 @@ $app->get('/mesajlar', function (Request $request, Response $response) {
     $db = new Db();
     try {
         $db = $db->connect();
-
         $mesajlar = $db->query("SELECT * FROM feed")->fetchAll(PDO::FETCH_OBJ);
-
-
-
         return $response
             ->withStatus(200)
             ->withHeader("Content-Type", 'application/json')
-            ->withJson($mesajlar, null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+            ->withJson((new ResponseSuccessDataModel())
+                        ->setMessage("Listeleme başarılı")
+                        ->setData($mesajlar)
+            , null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
     } catch (PDOException $e) {
         return $response->withJson(
             array(
