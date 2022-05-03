@@ -32,6 +32,13 @@ class ResponseDataModel extends ResponseModel
         $this->data = $data;
     }
 }
+class ResponseSuccessDataModel extends ResponseDataModel
+{
+    public function __construct()
+    {
+        $this->success = true;
+    }
+}
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
