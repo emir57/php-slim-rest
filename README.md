@@ -12,30 +12,30 @@ bool $success;
 function setMessage(string $message);
 <br>
 <hr>
-ResponseSuccessModel ```diff -extends``` ResponseModel
+ResponseSuccessModel ```diff -extends ``` ResponseModel
 <br>
 constructor => $success = true;
 <br>
 <hr>
-ResponseErrorModel ```diff -extends``` ResponseModel
+ResponseErrorModel ```diff -extends ``` ResponseModel
 <br>
 constructor => $success = false;
 <br>
 
 <hr>
-ResponseDataModel ```diff -extends``` ResponseModel
+ResponseDataModel ```diff -extends ``` ResponseModel
 <br>
 $data;
 <br>
 function setData($data);
 <br>
 <hr>
-ResponseSuccessDataModel ```diff -extends``` ResponseDataModel
+ResponseSuccessDataModel ```diff -extends ``` ResponseDataModel
 <br>
 constructor => $success = true;
 <br>
 <hr>
-ResponseErrorDataModel extends ResponseDataModel
+ResponseErrorDataModel ```diff -extends ``` ResponseDataModel
 <br>
 constructor => $success = false;
 <br>
