@@ -245,34 +245,32 @@ $app->post('/giris', function (Request $request, Response $response) {
         $course = $prepare->execute();
         $userData = $prepare->fetch(PDO::FETCH_OBJ);
 
-
-
-
         if ($userData) {
             $user = internalUserDetails($userData->username);
             return $response
                 ->withStatus(200)
                 ->withHeader("Content-Type", 'application/json')
                 //->withJson($user->token);
-                ->withJson($user, null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+                ->withJson((new ResponseSuccessDataModel())
+                        ->setMessage("Giriş başarılı")
+                        ->setData($user),
+                    null,
+                    JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
+                );
         } else {
             return $response
                 ->withStatus(401)
                 ->withHeader("Content-Type", 'application/json')
-                ->withJson(array(
-                    "error" => array(
-                        "text"  => "Login işlemi sırasında bir problem oluştu."
-                    )
-                ), null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+                ->withJson((new ResponseErrorModel)
+                        ->setMessage("Login işlemi sırasında bir problem oluştu."),
+                    null,
+                    JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
+                );
         }
     } catch (PDOException $e) {
         return $response->withJson(
-            array(
-                "error" => array(
-                    "text"  => $e->getMessage(),
-                    "code"  => $e->getCode()
-                )
-            ),
+            (new ResponseErrorModel)
+                ->setMessage($e->getMessage()),
             null,
             JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
         );
