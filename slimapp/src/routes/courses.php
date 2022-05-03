@@ -24,6 +24,14 @@ class ResponseErrorModel extends ResponseModel
         $this->success = false;
     }
 }
+class ResponseDataModel extends ResponseModel
+{
+    public $data;
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
+}
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
