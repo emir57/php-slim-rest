@@ -12,7 +12,15 @@ bool $success;
 function setMessage(string $message);
 <br>
 <hr>
-
+ResponseSuccessModel extends ResponseModel
+<br>
+constructor => $success = true;
+<br>
+<hr>
+ResponseErrorModel extends ResponseModel
+<br>
+constructor => $success = false;
+<br>
 
 
 <br>
