@@ -187,11 +187,9 @@ $app->post('/kayit', function (Request $request, Response $response) {
                 return $response
                     ->withStatus(400)
                     ->withHeader("Content-Type", 'application/json')
-                    ->withJson(array(
-                        "error" => array(
-                            "text"  => "Bu kullanıcı kayıtlı!"
-                        )
-                    ), null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+                    ->withJson((new ResponseErrorModel())
+                                ->setMessage("Bu kullanıcı kayıtlı!")
+                    , null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
             }
         } else {
             return $response
