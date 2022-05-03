@@ -370,27 +370,22 @@ $app->post('/mesaj/guncelle/{id}', function (Request $request, Response $respons
                     return $response
                         ->withStatus(200)
                         ->withHeader("Content-Type", 'application/json')
-                        ->withJson(array(
-                            "text"  => "Mesaj başarılı bir şekilde güncellenmiştir.."
-                        ), null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+                        ->withJson((new ResponseSuccessModel())
+                            ->setMessage("Mesaj başarılı bir şekilde güncellenmiştir.."), null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
                 } else {
                     return $response
                         ->withStatus(500)
                         ->withHeader("Content-Type", 'application/json')
-                        ->withJson(array(
-                            "error" => array(
-                                "text"  => "Düzenleme işlemi sırasında bir problem oluştu."
-                            )
-                        ), null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+                        ->withJson((new ResponseErrorModel())
+                                ->setMessage("Düzenleme işlemi sırasında bir problem oluştu."),
+                            null,
+                            JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
+                        );
                 }
             } catch (PDOException $e) {
                 return $response->withJson(
-                    array(
-                        "error" => array(
-                            "text"  => $e->getMessage(),
-                            "code"  => $e->getCode()
-                        )
-                    ),
+                    (new ResponseErrorModel())
+                        ->setMessage($e->getMessage()),
                     null,
                     JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
                 );
@@ -400,20 +395,17 @@ $app->post('/mesaj/guncelle/{id}', function (Request $request, Response $respons
             return $response
                 ->withStatus(400)
                 ->withHeader("Content-Type", 'application/json')
-                ->withJson(array(
-                    "error" => array(
-                        "text"  => "Geçersiz kullanıcı, Düzenleme işlemi sırasında bir problem oluştu."
-                        //"text"  => $user
-                    )
-                ), null, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+                ->withJson(
+                    (new ResponseErrorModel())
+                        ->setMessage("Geçersiz kullanıcı, Düzenleme işlemi sırasında bir problem oluştu."),
+                    null,
+                    JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
+                );
         }
     } else {
         return $response->withStatus(500)->withJson(
-            array(
-                "error" => array(
-                    "text"  => "ID bilgisi eksik.."
-                )
-            ),
+            (new ResponseErrorModel())
+                ->setMessage("ID bilgisi eksik.."),
             null,
             JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
         );
