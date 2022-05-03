@@ -22,8 +22,6 @@ ResponseErrorModel extends ResponseModel
 constructor => $success = false;
 <br>
 
-
-<br>
 <hr>
 ResponseDataModel extends ResponseModel
 <br>
@@ -32,4 +30,13 @@ $data;
 function setData($data);
 <br>
 <hr>
+ResponseSuccessDataModel extends ResponseDataModel
+<br>
+constructor => $success = true;
+<br>
+<hr>
+ResponseErrorDataModel extends ResponseDataModel
+<br>
+constructor => $success = false;
+<br>
 
