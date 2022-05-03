@@ -506,12 +506,8 @@ function internalUserDetails($input)
 
     } catch (PDOException $e) {
         return $response->withJson(
-            array(
-                "error" => array(
-                    "text"  => $e->getMessage(),
-                    "code"  => $e->getCode()
-                )
-            ),
+            (new ResponseErrorModel())
+                ->setMessage($e->getMessage()),
             null,
             JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK
         );
