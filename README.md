@@ -38,4 +38,12 @@ constructor => $success = true;
 <br>
 constructor => $success = false;
 <br>
+<h2>Use</h2>
+<br>
+(new ResponseSuccessModel())
+    ->setMessage("Successful");
+<br>
+(new ResponseSuccessDataModel())
+    ->setMessage("Successful")
+    ->setData($posts);
 
