@@ -40,10 +40,10 @@ constructor => $success = false;
 <br>
 <h2>Use</h2>
 <br>
-(new ResponseSuccessModel())
-    ->setMessage("Successful");
+(new ResponseSuccessModel())<br>
+&nbsp;&nbsp;->setMessage("Successful");
 <br>
-(new ResponseSuccessDataModel())
-    ->setMessage("Successful")
-    ->setData($posts);
+(new ResponseSuccessDataModel())<br>
+&nbsp;&nbsp;->setMessage("Successful")<br>
+&nbsp;&nbsp;->setData($posts);
 
