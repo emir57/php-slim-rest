@@ -39,11 +39,14 @@ constructor => $success = true;
 constructor => $success = false;
 <br>
 <h2>Use</h2>
-<br>
-(new ResponseSuccessModel())<br>
-&nbsp;&nbsp;->setMessage("Successful");
-<br>
-(new ResponseSuccessDataModel())<br>
-&nbsp;&nbsp;->setMessage("Successful")<br>
-&nbsp;&nbsp;->setData($posts);
+
+```php
+(new ResponseSuccessModel())
+            ->setMessage("Successful");
+
+(new ResponseSuccessDataModel())
+            ->setMessage("Successful")<br>
+            ->setData($posts);
+            
+```
 
