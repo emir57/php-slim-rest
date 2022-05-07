@@ -67,7 +67,7 @@ class ResponseErrorDataModel extends ResponseDataModel{
             ->setMessage("Successful");
 
 (new ResponseSuccessDataModel())
-            ->setMessage("Successful")<br>
+            ->setMessage("Successful")
             ->setData($posts);
             
 ```
