@@ -14,14 +14,20 @@ class ResponseModel{
 
 ```php
 class ResponseSuccessModel extends ResponseModel{
-            constructor => $success = true;
+            public function __construct()
+            {
+                $this->success = true;
+            }
 }
 ```
 <hr>
 
 ```php
 class ResponseErrorModel extends ResponseModel{
-            constructor => $success = false;
+            public function __construct()
+            {
+                $this->success = false;
+            }
 }
 ```
 <hr>
@@ -36,7 +42,10 @@ class ResponseDataModel extends ResponseModel{
 
 ```php
 class ResponseSuccessDataModel extends ResponseDataModel{
-            constructor => $success = true;
+            public function __construct()
+            {
+                $this->success = true;
+            }
 }
 ```
 
@@ -44,7 +53,10 @@ class ResponseSuccessDataModel extends ResponseDataModel{
 
 ```php
 class ResponseErrorDataModel extends ResponseDataModel{
-            constructor => $success = false;
+            public function __construct()
+            {
+                $this->success = false;
+            }
 }
 ```
 
