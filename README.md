@@ -5,38 +5,38 @@ Add custom response model
 
 ```php
 class ResponseModel{
-string $message;
-bool $success;
-function setMessage(string $message);
+            string $message;
+            bool $success;
+            function setMessage(string $message);
 }
 ```
 <hr>
 
 ```php
 class ResponseSuccessModel extends ResponseModel{
-constructor => $success = true;
+            constructor => $success = true;
 }
 ```
 <hr>
 
 ```php
 class ResponseErrorModel extends ResponseModel{
-constructor => $success = false;
+            constructor => $success = false;
 }
 ```
 <hr>
 
 ```php
 class ResponseDataModel extends ResponseModel{
-$data;
-function setData($data);
+            $data;
+            function setData($data);
 }
 ```
 <hr>
 
 ```php
 class ResponseSuccessDataModel extends ResponseDataModel{
-constructor => $success = true;
+            constructor => $success = true;
 }
 ```
 
@@ -44,7 +44,7 @@ constructor => $success = true;
 
 ```php
 class ResponseErrorDataModel extends ResponseDataModel{
-constructor => $success = false;
+            constructor => $success = false;
 }
 ```
 
