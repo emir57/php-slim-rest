@@ -66,6 +66,7 @@ class ResponseErrorDataModel extends ResponseDataModel{
 (new ResponseSuccessModel())
             ->setMessage("Successful");
 ```
+
 ```php
 (new ResponseSuccessDataModel())
             ->setMessage("Successful")
